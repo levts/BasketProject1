@@ -6,8 +6,8 @@ import java.io.IOException;
 import java.util.Scanner;
 
 public class Main {
-    public static void main(String[] args) throws IOException {
-        Basket basket = Basket.loadFromTxt(new File("Basket.txt"));
+    public static void main(String[] args) throws IOException, ClassNotFoundException {
+        Basket basket = Basket.loadFromBinFile(new File("Basket.bin"));
 
         System.out.println("Товары, которые есть в магазине:");
         String[] products = basket.getProducts();
@@ -25,7 +25,7 @@ public class Main {
             }
             String[] parts = partOfBasket.split(" ");
             basket.addToCart(Integer.parseInt(parts[0]), Integer.parseInt(parts[1]));
-            basket.saveToTxt(new File("Basket.txt"));
+            basket.saveBin(new File("Basket.bin"));
         }
         basket.printCart();
 
